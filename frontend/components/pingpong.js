@@ -372,17 +372,20 @@ function attachEventListeners(shadowRoot) {
           setTimeout(function() {
               shadowRoot.getElementById("myContainer").innerHTML = 
               `
-                  <div id="holder">
-                      <div>
-                          <button id="local">local</button>
-                      </div>
-                      <div>
-                          <button id="remote">remote</button>
-                      </div>
-                      <div>
-                          <button id="tournament">tournament</button>
-                      </div>
-                  </div>
+              <h1 id="title">Welcome to the Game Center</h1>
+              <p id="subtitle">Choose a mode to start your journey!</p>
+
+              <div id="holder">
+                <div id="local_div">
+                  <button id="local">local</button>
+                </div>
+                <div id="remote_div">
+                  <button id="remote">remote</button>
+                </div>
+                <div  id="tournament_div">
+                  <button id="tournament">tournament</button>
+                </div>
+              </div>
               `
               attachEventListeners(shadowRoot)
           }, 2000); 
@@ -508,31 +511,31 @@ function attachEventListeners(shadowRoot) {
       let origintournament = shadowRoot.getElementById("myContainer").innerHTML ;
       shadowRoot.getElementById("myContainer").innerHTML = 
       `
-          <h1>Tournament Registration</h1>
-          <form id="tournamentForm">
-              <div>
-                  <label for="Player1">Player1</label>
-                  <input type="text" id="Player1" name="Player1" required>
+<h1 id="tournament-title">Tournament Registration</h1>
+<form id="tournamentForm">
+    <div class="form-group">
+        <label for="Player1">Player 1</label>
+        <input type="text" maxlength="7" id="Player1" name="Player1" required>
+    </div>
 
-              </div>
+    <div class="form-group">
+        <label for="Player2">Player 2</label>
+        <input type="text" maxlength="7" id="Player2" name="Player2" required>
+    </div>
 
-              <div>
-                  <label for="Player2">Player2</label>
-                  <input type="text" id="Player2" name="Player2" required>
-              </div>
-              
-              <div>
-                  <label for="Player3">Player3</label>
-                  <input type="text" id="Player3" name="Player3" required>
-              </div>
-              
-              <div>
-                  <label for="Player4">Player4</label>
-                  <input type="text" id="Player4" name="Player4" required>
-              </div>
+    <div class="form-group">
+        <label for="Player3">Player 3</label>
+        <input type="text" maxlength="7" id="Player3" name="Player3" required>
+    </div>
 
-              <button  id="register_button" type="submit">Register</button>
-          </form>
+    <div class="form-group">
+        <label for="Player4">Player 4</label>
+        <input type="text" maxlength="7" id="Player4" name="Player4" required>
+    </div>
+
+    <button id="register_button" type="submit">Register</button>
+</form>
+
       `
   let playerData = [];
   let winer1 = ""
@@ -563,18 +566,20 @@ function attachEventListeners(shadowRoot) {
     setTimeout(function() {
               shadowRoot.getElementById("myContainer").innerHTML = 
               `
-                  <div id="holder">
-                      <div>
-                          <button id="local">local</button>
-                      </div>
-                      <div>
-                          <button id="remote">remote</button>
-                      </div>
-                      <div>
-                          <button id="tournament">tournament</button>
-                      </div>
-                  </div>
-                  <script src="game.js"></script>
+              <h1 id="title">Welcome to the Game Center</h1>
+              <p id="subtitle">Choose a mode to start your journey!</p>
+
+              <div id="holder">
+                <div id="local_div">
+                  <button id="local">local</button>
+                </div>
+                <div id="remote_div">
+                  <button id="remote">remote</button>
+                </div>
+                <div  id="tournament_div">
+                  <button id="tournament">tournament</button>
+                </div>
+              </div>
               `
               attachEventListeners(shadowRoot)
           }, 2000); 
@@ -583,26 +588,25 @@ function attachEventListeners(shadowRoot) {
   async function tournament_table() {
   
     shadowRoot.getElementById("myContainer").innerHTML = `
-          <div id="containe_all">
-            <div id="first" >
-              <div>
-                <div class="player-box"><p>${playerData[0]}</p></div>
-                <div class="player-box"><p>${playerData[1]}</p></div>
-              </div>
-              <div>
-                <div class="player-box">${winer1}</div>
-              </div>
-              <div>
-                <div class="player-box">${winer2}</div>
-              </div>
-              <div>
-                <div class="player-box"><p>${playerData[2]}</p></div>
-                <div class="player-box"><p>${playerData[3]}</p></div>
-              </div>
-            </div>
-              <button id="play-tour">play</button>
-
-          </div>
+<div id="containe_all">
+  <div id="first">
+    <div class="matchup">
+      <div class="player-box"><p>${playerData[0]}</p></div>
+      <div class="player-box"><p>${playerData[1]}</p></div>
+    </div>
+    <div class="winner">
+      <div class="player-box">${winer1}</div>
+    </div>
+    <div class="winner">
+      <div class="player-box">${winer2}</div>
+    </div>
+    <div class="matchup">
+      <div class="player-box"><p>${playerData[2]}</p></div>
+      <div class="player-box"><p>${playerData[3]}</p></div>
+    </div>
+  </div>
+  <button id="play-tour">Play</button>
+</div>
         `;
     shadowRoot.getElementById("play-tour").addEventListener("click", async (event) => {
       console.log("play-tour")

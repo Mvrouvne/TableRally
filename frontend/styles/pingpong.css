@@ -756,7 +756,84 @@ header
 /*************************************************************************/
 /*************************************************************************/
 
+/****************/
+/* Target the h1 element with id 'tournament-title' */
+#tournament-title {
+    text-align: center;
+    color: #00766A; /* Teal for the title */
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
 
+/* Target the form element with id 'tournamentForm' */
+#tournamentForm {
+    background-color: #003E38; /* Dark green background for the form */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Darker shadow with black */
+    width: 100%;
+    max-width: 450px;
+    border: 2px solid #000; /* Black border around the form */
+}
+
+/* Target each input field by their respective ids */
+#Player1, #Player2, #Player3, #Player4 {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 2px solid #014E46; /* Lighter green border for input */
+    border-radius: 5px;
+    background-color: #002924; /* Dark background for input */
+    color: white;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+#Player1:focus, #Player2:focus, #Player3:focus, #Player4:focus {
+    outline: none;
+    border-color: #00766A; /* Teal focus border */
+    box-shadow: 0 0 8px rgba(0, 118, 106, 0.5);
+}
+
+/* Target the labels by their respective ids */
+#label-player1, #label-player2, #label-player3, #label-player4 {
+    display: block;
+    font-size: 1.1rem;
+    color: #014E46; /* Lighter green for labels */
+    margin-bottom: 8px;
+}
+
+/* Target the button with id 'register_button' */
+#register_button {
+    width: 100%;
+    padding: 14px;
+    background-color: #00766A; /* Teal button background */
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#register_button:hover {
+    background-color: #014E46; /* Darker green on hover */
+}
+
+#register_button:active {
+    background-color: #003E38; /* Dark green on active */
+}
+
+/* Adding black for text and other small elements */
+body {
+    color: #000; /* Default text color set to black */
+}
+
+#register_button:focus {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Subtle black focus effect for the button */
+}
+
+/****************/
 
 #myContainer {
     width: 100vw;
@@ -764,6 +841,7 @@ header
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 #holder {
@@ -829,8 +907,11 @@ canvas {
     margin: auto;
     border: 4px solid black;
     border-radius: 20px;
+
 }
 
+
+/*************/
 .circle_pong {
     border-radius: 100vw;
     width: 15vw;
@@ -952,3 +1033,205 @@ canvas {
 }
 
 
+#holder {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #003E38; /* Primary container color */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  #local_div, #remote_div, #tournament_div {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #local, #remote, #tournament {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #00766A, #014E46); /* Button gradient */
+    border: 2px solid #014E46;
+    border-radius: 12px;
+    padding: 18px 20px; /* Larger buttons with balanced padding */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    width: 100%;
+    max-width: 160px;
+    min-width: 160px; /* Ensures equal button width */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centers text inside buttons */
+  }
+  
+  #local:hover, #remote:hover, #tournament:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(135deg, #00A389, #017F6F); /* Brighter gradient on hover */
+  }
+  
+  #local:active, #remote:active, #tournament:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Smooth fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    #holder {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    #local, #remote, #tournament {
+      font-size: 1rem;
+      max-width: 140px;
+      min-width: 140px; /* Keeps buttons equal in smaller viewports */
+      padding: 16px 15px; /* Adjusted padding for responsive height */
+    }
+  }
+
+  
+  #title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #00A389;
+    text-align: center;
+  }
+  
+  #subtitle {
+    font-size: 1rem;
+    color: #B0EFE7;
+    text-align: center;
+  }
+  
+
+
+
+/* General Styles */
+#containe_all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #002924; /* Dark background for the overall container */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 1200px; /* Adjust for horizontal layout */
+    margin: 0 auto;
+  }
+  
+  #first {
+    display: flex;
+    flex-direction: row; /* Horizontal layout */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .matchup,
+  .winner {
+    display: flex;
+    flex-direction: column; /* Stack players vertically in a matchup */
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px; /* Space between matchups */
+  }
+  
+  .player-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px; /* Larger width for the player box */
+    height: 120px; /* Larger height for a more circular shape */
+    background-color: #003E38; /* Primary background color */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50%; /* Makes the player box circular */
+    margin: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .player-box p {
+    margin: 0;
+    font-size: 20px; /* Slightly bigger text for readability */
+  }
+  
+  .matchup .player-box {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .winner .player-box {
+    width: 150px; /* Larger winner box for better distinction */
+    height: 150px;
+    background-color: #00766A; /* Winner box with a distinct color */
+  }
+  
+  .player-box:hover {
+    transform: scale(1.1); /* Slight hover effect for interactivity */
+  }
+  
+  /* Play button styles */
+  #play-tour {
+    padding: 18px 28px;
+    font-size: 20px;
+    background-color: #014E46; /* Button background */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  
+    /* Ensuring the text is centered */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  #play-tour:hover {
+    background-color: #003E38; /* Button hover effect */
+    transform: scale(1.05);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 800px) {
+    #first {
+      flex-direction: column; /* Stack vertically on smaller screens */
+    }
+  
+    .player-box {
+      width: 100px; /* Smaller circular boxes on mobile */
+      height: 100px;
+    }
+  
+    .winner .player-box {
+      width: 120px;
+      height: 120px;
+    }
+  
+    #play-tour {
+      padding: 12px 22px;
+      font-size: 18px;
+    }
+  }
+  

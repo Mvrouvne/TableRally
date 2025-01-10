@@ -1,7 +1,6 @@
-# myapp/urls.py
 from django.urls import path
-from . import views
+from .views import ScoreList
 
 urlpatterns = [
-    path('myview/', views.my_view, name='my_view'),
+    path('Score/', ScoreList.as_view(), name='score-list'),
 ]
