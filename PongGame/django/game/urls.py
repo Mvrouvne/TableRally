@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import ScoreList
+from .views import PlayerGamesAPIView
 
 urlpatterns = [
-    path('Score/', ScoreList.as_view(), name='score-list'),
+    path('player-games/', PlayerGamesAPIView.as_view(), name='player-games-api'),
 ]

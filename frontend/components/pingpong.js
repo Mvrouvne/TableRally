@@ -394,7 +394,6 @@ function attachEventListeners(shadowRoot) {
       
       chatSocket.onmessage = function (event) {
           const data = JSON.parse(event.data);
-          console.log(data);
           if (data.TITLE == "start") {
               const dato = { TITLE: "play" };
               chatSocket.send(JSON.stringify(dato));

@@ -3,7 +3,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from queue import Queue
 import time
 import asyncio
-from .models import Score  
+from .models import pongames  
 from asgiref.sync import sync_to_async
 from authentication.models import CustomUser as User
 from channels.db import database_sync_to_async
@@ -126,7 +126,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 			await self.accept()
 			self.me = self.user.id
 			acepted_users.append(self.me)
-			await self.send(text_data=json.dumps({"TITLE": "wait"}))
+			await self.send(text_data=json.dumps({"TITLE": "wait", "image" : self.user.image_url}))
 			await self.add_to_woiting_list()
 
 	async def add_to_woiting_list(self):
@@ -213,7 +213,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
 					self.game.player2.Down()
 
 	async def disconnect(self, code):
-		games_map[self.group_name] = False
+		if self.group_name:
+			games_map[self.group_name] = False
 		await self.channel_layer.group_discard(
             self.group_name,
             self.channel_name
@@ -260,6 +261,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 				)
 				await asyncio.sleep(0.03)
 				if self.game.score1  == 3 or self.game.score2 == 3:
+					print(self.game.score1, "<<<<<<<")
 					if self.game.score1 == 3:
 						winner = self.me
 					else :
@@ -286,12 +288,15 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
 	@sync_to_async
 	def create_score_entry(self):
-		Score.objects.create(
-			user1_id=self.me,
-			user2_id=self.other,
+		print((User.objects.get)(id=self.other))
+		pongames.objects.create(
+			player1_id=(User.objects.get)(id=self.me),
+			player2_id=(User.objects.get)(id=self.other),
 			score1=self.game.score1,
 			score2= self.game.score2
 		)
+		print("by database")
+
 		
 	async def loopsend(self, event):
 		TITLE = event["TITLE"]

@@ -3,9 +3,9 @@ from authentication.models import CustomUser as User
 
 
 # Create your models here
-class Score(models.Model):
+class pongames(models.Model):
   #change the channle name to id user
-  user1_id = models.ForeignKey(User, on_delete=models.CASCADE,related_name="Score") 
-  user2_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Score2")
-  score1 = models.CharField(max_length=255)
-  score2 = models.CharField(max_length=255)
+  player1_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='player1')
+  player2_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='player2')
+  score1 = models.IntegerField(default=0)
+  score2 = models.IntegerField(default=0)
